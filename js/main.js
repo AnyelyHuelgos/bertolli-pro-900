@@ -196,3 +196,80 @@ formulario.addEventListener('submit', function (e) {
   formulario.reset();
 }
 });
+
+
+
+
+
+
+
+
+(function () {
+
+  var PRECIO = 4299000;
+  var CUOTAS = [3, 6, 12, 24, 36];
+
+
+  function formatearCOP(numero) {
+    return Math.round(numero).toLocaleString('es-CO');
+  }
+
+  function calcularCuota(numeroCuotas) {
+    return PRECIO / numeroCuotas;
+  }
+
+
+  var numeroResultado   = document.getElementById('numero-resultado');
+  var descripcionCuotas = document.getElementById('descripcion-cuotas');
+  var radios            = document.querySelectorAll('input[name="cuotas"]');
+  var opciones          = document.querySelectorAll('.opcion-cuota');
+
+
+  CUOTAS.forEach(function (n) {
+    var preview = document.getElementById('prev-' + n);
+    if (preview) {
+      preview.textContent = '$' + formatearCOP(calcularCuota(n)) + '/mes';
+    }
+  });
+
+
+  if (numeroResultado) {
+    numeroResultado.textContent = formatearCOP(calcularCuota(3));
+  }
+
+
+  radios.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      var n = parseInt(this.value, 10);
+
+
+      opciones.forEach(function (opcion) {
+        opcion.classList.remove('activa');
+      });
+      this.closest('.opcion-cuota').classList.add('activa');
+
+
+      if (numeroResultado) {
+        numeroResultado.textContent = formatearCOP(calcularCuota(n));
+      }
+
+
+      if (descripcionCuotas) {
+        descripcionCuotas.textContent =
+          'En ' + n + ' cuota' + (n > 1 ? 's' : '') + ' sin intereses';
+      }
+    });
+  });
+
+
+  opciones.forEach(function (opcion) {
+    opcion.addEventListener('click', function () {
+      var radio = this.querySelector('input[type="radio"]');
+      if (radio && !radio.checked) {
+        radio.checked = true;
+        radio.dispatchEvent(new Event('change'));
+      }
+    });
+  });
+
+})();

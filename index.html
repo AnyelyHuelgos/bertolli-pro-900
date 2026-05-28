@@ -285,6 +285,80 @@
                 </div>
             </div>
         </section>
+
+
+
+        <section class="seccion-calculadora" aria-label="Calculadora de cuotas Bertolli Pro 900">
+            <div class="contenedor-calculadora">
+            
+                <header class="encabezado-calculadora">
+                <p class="etiqueta-superior">Financiación sin intereses</p>
+                <h2 class="titulo-calculadora">Calcula tus cuotas</h2>
+                <p class="subtitulo-calculadora">
+                    Elige el plan que mejor se adapta a tu negocio.<br>
+                    Sin intereses, sin cargos ocultos.
+                </p>
+                </header>
+            
+                <div class="cuerpo-calculadora">
+            
+                <!-- Columna izquierda: opciones -->
+                <div class="columna-opciones">
+                    <p class="etiqueta-campo">Valor del equipo</p>
+                    <p class="precio-equipo">$4.299.000 COP</p>
+            
+                    <p class="etiqueta-campo">Número de cuotas</p>
+                    <div class="lista-opciones" role="radiogroup" aria-label="Seleccionar número de cuotas">
+            
+                    <label class="opcion-cuota activa" data-n="3">
+                        <input type="radio" name="cuotas" value="3" checked>
+                        <span class="texto-opcion">3 cuotas</span>
+                        <span class="preview-opcion" id="prev-3"></span>
+                    </label>
+            
+                    <label class="opcion-cuota" data-n="6">
+                        <input type="radio" name="cuotas" value="6">
+                        <span class="texto-opcion">6 cuotas</span>
+                        <span class="preview-opcion" id="prev-6"></span>
+                    </label>
+            
+                    <label class="opcion-cuota" data-n="12">
+                        <input type="radio" name="cuotas" value="12">
+                        <span class="texto-opcion">12 cuotas</span>
+                        <span class="preview-opcion" id="prev-12"></span>
+                    </label>
+            
+                    <label class="opcion-cuota" data-n="24">
+                        <input type="radio" name="cuotas" value="24">
+                        <span class="texto-opcion">24 cuotas</span>
+                        <span class="preview-opcion" id="prev-24"></span>
+                    </label>
+            
+                    <label class="opcion-cuota" data-n="36">
+                        <input type="radio" name="cuotas" value="36">
+                        <span class="texto-opcion">36 cuotas</span>
+                        <span class="preview-opcion" id="prev-36"></span>
+                    </label>
+            
+                    </div>
+                </div>
+
+                <div class="columna-resultado">
+                    <p class="etiqueta-resultado">Pagas por mes</p>
+                    <p class="descripcion-resultado" id="descripcion-cuotas">En 3 cuotas sin intereses</p>
+                    <p class="monto-resultado" aria-live="polite">
+                    <span class="simbolo-moneda">$</span><span id="numero-resultado"></span>
+                    </p>
+                    <p class="periodo-resultado">COP / mensual</p>
+                    <div class="divisor-resultado"></div>
+                    <p class="fila-total">Total: <span>$4.299.000 COP</span></p>
+                </div>
+            
+                </div>
+                
+            
+            </div>
+        </section>
     </main>
 
    
