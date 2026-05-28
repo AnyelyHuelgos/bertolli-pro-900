@@ -36,12 +36,15 @@
     <header class="encabezado">
         <nav class="navegacion" arial-label="navegacion principal">
             <a href="#" class="logo">Bertolli</a>
-            <ul class="menu" role="list">
+            <ul class="menu" id="menu-principal" role="list">
                 <li><a href="#caracteristicas">Características</a></li>
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#especificaciones">Especificacion</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                <span class="hamburguesa"></span>
+            </button>
             <a href="#contacto" class="boton-cotizar">Cotizar</a>
         </nav>
     </header>
@@ -50,24 +53,27 @@
 
     <main>
         <section class="inicio" aria-label="Presentación del producto">
-            <div class="inicio-texto">
-                <h1 class="titulo-principal">Bertolli Pro 900</h1>
-                <p class="subtitulo">Diseñada para quienes no aceptan menos que lo mejor.La potencia de una cocina de restaurante, ahora en casa.</p>
-                <p class="precio">$4.299.000</p>
-                <div class="botones">
-                <a href="#contacto" class="boton-primario">Cotizar ahora</a>
-                <a href="#especificaciones" class="boton-secundario">Ver especificaciones</a>
+            <div class="contenedor">
+                <div class="inicio-texto">
+                    <h1 class="titulo-principal">Bertolli Pro 900</h1>
+                    <p class="subtitulo">Diseñada para quienes no aceptan menos que lo mejor.La potencia de una cocina de restaurante, ahora en casa.</p>
+                    <p class="precio">$4.299.000</p>
+                    <div class="botones">
+                    <a href="#contacto" class="boton-primario">Cotizar ahora</a>
+                    <a href="#especificaciones" class="boton-secundario">Ver especificaciones</a>
+                    </div>
+                </div>
+                <div class="inicio-imagen">
+                    <img
+                    src="assets/images/hero1.webp"
+                    alt="Cocina a gas Bertolli Pro 900 de acero inoxidable con 5 hornillas"
+                    width="700"
+                    height="560"
+                    fetchpriority="high"
+                    />
                 </div>
             </div>
-            <div class="inicio-imagen">
-                <img
-                src="assets/images/hero1.webp"
-                alt="Cocina a gas Bertolli Pro 900 de acero inoxidable con 5 hornillas"
-                width="700"
-                height="560"
-                fetchpriority="high"
-                />
-            </div>
+            
         </section>
 
 
