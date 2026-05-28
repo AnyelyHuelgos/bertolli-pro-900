@@ -16,7 +16,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500&display=swap" />
+    </noscript>
 
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -27,10 +30,6 @@
 
 <body>
     
-<!-- HUMAN ONLY: escribí toda la estructura HTML desde cero — 
-     las etiquetas semánticas, la jerarquía de secciones y el orden 
-     del contenido.
-     Claude aportó únicamente los textos y el copy del producto. -->
 
 
     <header class="encabezado">
@@ -39,7 +38,7 @@
             <ul class="menu" id="menu-principal" role="list">
                 <li><a href="#caracteristicas">Características</a></li>
                 <li><a href="#galeria">Galería</a></li>
-                <li><a href="#especificaciones">Especificacion</a></li>
+                <li><a href="#especificaciones">Especificaciones</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
             <button class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
@@ -52,6 +51,8 @@
 
 
     <main>
+        <!-- HUMAN ONLY: escribí la sesion de inicio, caracteristicas y especificaciones  -->
+
         <section class="inicio" aria-label="Presentación del producto">
             <div class="contenedor">
                 <div class="inicio-texto">
@@ -149,13 +150,14 @@
                 </div>
             </div>
 
-            <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
+            
+        </section>
+        <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
                 <button class="visor-cerrar" aria-label="Cerrar imagen">&times;</button>
                 <button class="visor-anterior" aria-label="Imagen anterior">&#8249;</button>
                 <img class="visor-imagen" src="" alt="" />
                 <button class="visor-siguiente" aria-label="Imagen siguiente">&#8250;</button>
-            </div>
-        </section>
+        </div>
 
 
         <section class="especificaciones" id="especificaciones" aria-label="Especificaciones técnicas">
@@ -289,10 +291,10 @@
 
 
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
+    <footer class="footer-pagina" role="contentinfo">
+        <div class="contenedor">
+            <div class="footer-columnas">
+                <div class="footer-marca">
                 <p class="footer-logo">Bertolli</p>
                 <p>Equipos de cocina profesional para el hogar exigente.</p>
                 </div>
@@ -304,17 +306,25 @@
                     <li><a href="#galeria">Galería</a></li>
                 </ul>
                 </nav>
-                <div class="footer-contact">
+                <nav aria-label="Enlaces legales">
+                    <h3>Legal</h3>
+                    <ul role="list">
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Garantía</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-contacto">
                 <h3>Contacto</h3>
                 <p>info@bertolli.com.co</p>
                 <p>+57 300 123 4567</p>
-                <div class="social-links">
+                <div class="footer-redes">
                     <a href="#" aria-label="Instagram de Bertolli">Instagram</a>
                     <a href="#" aria-label="Facebook de Bertolli">Facebook</a>
                 </div>
                 </div>
             </div>
-            <p class="footer-copy">© 2025 Bertolli Pro. Todos los derechos reservados.</p>
+            <p class="footer-derechos">© 2025 Bertolli Pro. Todos los derechos reservados.</p>
         </div>
     </footer>
 
