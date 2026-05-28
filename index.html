@@ -12,10 +12,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/images/hero.webp" />
 
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="icon" type="image/png" href="assets/favicon.webp" />
+
+
+    <link rel="preload" as="image" href="assets/images/hero1.webp" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500&display=swap" media="print" onload="this.media='all'" />
     <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@400;500&display=swap" />
@@ -23,9 +27,8 @@
 
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/components.css" />
-
-
+    <link rel="stylesheet" href="css/components.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="css/components.css" /></noscript>
 </head>
 
 <body>
@@ -398,11 +401,11 @@
                 </div>
                 </div>
             </div>
-            <p class="footer-derechos">© 2025 Bertolli Pro. Todos los derechos reservados.</p>
+            <p class="footer-derechos">© 2026 Bertolli Pro. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 
 
 </body>
