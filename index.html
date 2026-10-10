@@ -266,7 +266,17 @@
                     </a>
                 </div>
 
-                <form class="formulario" novalidate aria-label="Formulario de cotización">
+                <form class="formulario" novalidate aria-label="Formulario de cotización">                   
+                    <div class="campo-trampa" aria-hidden="true">
+                    <label for="sitio_web">Deja este campo vacío</label>
+                    <input
+                        type="text"
+                        id="sitio_web"
+                        name="sitio_web"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+                    </div>
                     <div class="campo">
                     <label for="nombre">Nombre</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required />
