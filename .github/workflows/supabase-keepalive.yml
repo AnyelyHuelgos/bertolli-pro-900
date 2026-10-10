@@ -1,0 +1,29 @@
+
+name: Mantener Supabase activo
+
+on:
+  schedule:
+    # Todos los días a las 12:00 UTC
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Consultar Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: |
+          curl --fail --silent --show-error \
+            --retry 3 \
+            --max-time 30 \
+            --get \
+            --data-urlencode "select=id" \
+            --data-urlencode "limit=1" \
+            -H "apikey: $SUPABASE_SECRET_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SECRET_KEY" \
+            "$SUPABASE_URL/rest/v1/cotizaciones" \
+            -o /dev/null
