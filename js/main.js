@@ -140,7 +140,7 @@ alVerlo('#contacto', function () {
     });
   });
 
-  formulario.addEventListener('submit', function (e) {
+  formulario.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const campoCampos = {
@@ -162,15 +162,53 @@ alVerlo('#contacto', function () {
     else if (!validarEmail(email)) { mostrarError(campoCampos.email, 'Ingresa un email con formato válido.'); valido = false; }
     if (!mensaje) { mostrarError(campoCampos.mensaje, 'El mensaje no puede estar vacío.'); valido = false; }
 
+
     if (valido) {
-      const existente = formulario.querySelector('.mensaje-exito');
-      if (existente) existente.remove();
-      const exito = document.createElement('p');
-      exito.className = 'mensaje-exito';
-      exito.textContent = '¡Mensaje enviado con éxito!';
-      formulario.querySelector('[type="submit"]').insertAdjacentElement('beforebegin', exito);
-      formulario.reset();
-    }
+        const boton = formulario.querySelector('[type="submit"]');
+
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+
+        formulario.querySelector('.mensaje-exito')?.remove();
+
+        const aviso = document.createElement('p');
+        aviso.className = 'mensaje-exito';
+        aviso.setAttribute('role', 'status');
+
+        boton.insertAdjacentElement('beforebegin', aviso);
+
+        try {
+          const respuesta = await fetch('/api/cotizaciones', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              nombre: nombre,
+              email: email,
+              mensaje: mensaje,
+              sitio_web: formulario.querySelector('[name="sitio_web"]').value
+            })
+          });
+
+          if (!respuesta.ok) {
+            throw new Error('No se pudo guardar la cotización');
+          }
+
+          aviso.textContent = '¡Cotización enviada correctamente!';
+          formulario.reset();
+
+        } catch (error) {
+          console.error('Error al enviar cotización:', error);
+
+          aviso.textContent =
+            'No pudimos enviar tu solicitud. Inténtalo nuevamente.';
+
+        } finally {
+          boton.disabled = false;
+          boton.textContent = 'Enviar mensaje';
+        }
+      }
   });
 });
 
