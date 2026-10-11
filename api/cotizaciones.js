@@ -11,6 +11,19 @@ export default async function handler(req, res) {
     });
   }
 
+  // Rechazar solicitudes con un cuerpo demasiado grande
+  const tamanoSolicitud = Buffer.byteLength(
+    JSON.stringify(req.body ?? {}),
+    'utf8'
+  );
+
+  if (tamanoSolicitud > 10_000) {
+    return res.status(413).json({
+      error: 'La solicitud es demasiado grande'
+    });
+  }
+
+
   // 2. Recibir los datos enviados por el formulario  
   const { nombre, email, mensaje, sitio_web } = req.body ?? {};
 
