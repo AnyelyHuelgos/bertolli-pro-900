@@ -1127,3 +1127,62 @@
     border-radius: 16px;
   }
 }
+
+
+/* =========================================
+   BERTOLLI CONCIERGE — PREGUNTAS RÁPIDAS
+   ========================================= */
+
+.chat-sugerencias {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px 18px 18px;
+}
+
+.chat-sugerencias[hidden] {
+  display: none !important;
+}
+
+.chat-sugerencias-titulo {
+  margin: 0 0 5px;
+  color: #8c7868;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.chat-sugerencia {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e6dbce;
+  border-radius: 12px;
+  background: #faf7f2;
+  color: #302820;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.chat-sugerencia:hover {
+  background: #f0e9df;
+  border-color: #cdb9a2;
+  transform: translateX(3px);
+}
+
+.chat-sugerencia:focus-visible {
+  outline: 2px solid #8c7868;
+  outline-offset: 3px;
+}
+
+.chat-sugerencia:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
