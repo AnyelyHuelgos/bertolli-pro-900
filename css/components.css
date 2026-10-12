@@ -1186,3 +1186,148 @@
   cursor: not-allowed;
   transform: none;
 }
+
+
+
+
+/* =========================================
+   BERTOLLI CONCIERGE — OPTIMIZACIÓN MÓVIL
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .chat-bertolli {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .chat-panel {
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+
+    width: calc(100vw - 16px);
+    height: min(600px, calc(100dvh - 16px));
+
+    max-height: calc(100dvh - 16px);
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 16px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Encabezado siempre visible */
+  .chat-cabecera {
+    flex-shrink: 0;
+    padding: 15px 18px;
+  }
+
+  /* Área desplazable de mensajes */
+  .chat-mensajes {
+    flex: 1 1 auto;
+    min-height: 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 16px 14px;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mensajes adaptados a pantallas pequeñas */
+  .chat-burbuja {
+    max-width: 90%;
+    padding: 12px 14px;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+  }
+
+  /* Preguntas rápidas con desplazamiento */
+  .chat-sugerencias {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: min(270px, 38dvh);
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .chat-sugerencia {
+    padding: 11px 13px;
+    font-size: 13px;
+    min-height: 44px;
+    flex-shrink: 0;
+  }
+
+  /* Formulario siempre en la parte inferior */
+  .chat-formulario {
+    flex-shrink: 0;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  #chat-pregunta {
+    min-width: 0;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .chat-formulario button {
+    width: 44px;
+    height: 44px;
+  }
+
+}
+
+/* Pantallas con poca altura */
+@media (max-height: 500px) and (max-width: 600px) {
+
+  .chat-panel {
+    height: calc(100dvh - 12px);
+    max-height: calc(100dvh - 12px);
+    bottom: 6px;
+  }
+
+  .chat-cabecera {
+    padding: 10px 14px;
+  }
+
+  .chat-sugerencias {
+    max-height: 120px;
+  }
+
+  .chat-mensajes {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+}
+
+/* Accesibilidad con teclado */
+.chat-abrir:focus-visible,
+#chat-cerrar:focus-visible,
+.chat-formulario button:focus-visible {
+  outline: 2px solid #a89070;
+  outline-offset: 3px;
+}
+
+/* Respetar preferencias de movimiento */
+@media (prefers-reduced-motion: reduce) {
+
+  .chat-abrir,
+  .chat-sugerencia,
+  .chat-formulario button {
+    transition: none;
+  }
+
+}

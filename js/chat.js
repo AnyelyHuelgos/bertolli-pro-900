@@ -27,6 +27,21 @@ cerrar.addEventListener('click', () => {
   abrir.focus();
 });
 
+
+/* Cerrar el chat con Escape */
+document.addEventListener('keydown', (evento) => {
+  if (evento.key === 'Escape' && !panel.hidden) {
+    evento.preventDefault();
+
+    panel.hidden = true;
+    abrir.setAttribute('aria-expanded', 'false');
+
+    // Devolver el foco al botón que abre el chat
+    abrir.focus();
+  }
+});
+
+
 // Agregar mensajes de forma segura
 function agregarMensaje(texto, tipo) {
   const burbuja = document.createElement('p');
@@ -67,6 +82,7 @@ async function enviarMensaje(texto) {
 
   const espera = agregarMensaje('Escribiendo...', 'bot');
 
+  
   try {
     const respuesta = await fetch('/api/agente', {
       method: 'POST',
@@ -80,22 +96,40 @@ async function enviarMensaje(texto) {
 
     const datos = await respuesta.json();
 
-    if (!respuesta.ok) {
-      throw new Error(
-        datos.error || 'Error del asistente'
-      );
+    if (respuesta.status === 429) {
+      const limiteDiario = /diario/i.test(datos.error || '');
+
+      espera.textContent = limiteDiario
+        ? 'Por hoy hemos alcanzado el límite de consultas. ¡Vuelve mañana!'
+        : 'Has realizado varias preguntas seguidas. Espera un minuto e inténtalo nuevamente.';
+
+      return;
     }
 
-    espera.textContent =
-      datos.respuesta || 'No pude responder en este momento.';
+    if (!respuesta.ok) {
+      espera.textContent =
+        'No pude completar tu consulta en este momento. Por favor, inténtalo nuevamente.';
+      return;
+    }
+
+    if (
+      typeof datos.respuesta !== 'string' ||
+      !datos.respuesta.trim()
+    ) {
+      espera.textContent =
+        'No recibí una respuesta completa. ¿Puedes intentarlo de nuevo?';
+      return;
+    }
+
+    espera.textContent = datos.respuesta.trim();
 
   } catch (error) {
     espera.textContent =
-      error.message === 'Failed to fetch'
-        ? 'No se pudo conectar con el asistente. Intenta nuevamente.'
-        : error.message || 'El asistente no está disponible.';
+      'No fue posible conectar con el asistente. Revisa tu conexión e inténtalo nuevamente.';
+  }
 
-  } finally {
+
+   finally {
     enviando = false;
 
     pregunta.disabled = false;

@@ -190,19 +190,36 @@ alVerlo('#contacto', function () {
               sitio_web: formulario.querySelector('[name="sitio_web"]').value
             })
           });
+          
+          if (respuesta.status === 429) {
+            aviso.setAttribute('role', 'alert');
+            aviso.textContent =
+              'Has enviado demasiadas solicitudes. Espera un minuto antes de intentarlo nuevamente.';
+            return;
+          }
+
+          if (respuesta.status === 503) {
+            aviso.setAttribute('role', 'alert');
+            aviso.textContent =
+              'El formulario no está disponible temporalmente. Inténtalo más tarde.';
+            return;
+          }
 
           if (!respuesta.ok) {
             throw new Error('No se pudo guardar la cotización');
           }
 
-          aviso.textContent = '¡Cotización enviada correctamente!';
+          aviso.setAttribute('role', 'status');
+          aviso.textContent =
+            '¡Solicitud de demostración guardada correctamente!';
           formulario.reset();
 
         } catch (error) {
-          console.error('Error al enviar cotización:', error);
+          console.error('Error al guardar la cotización');
 
+          aviso.setAttribute('role', 'alert');
           aviso.textContent =
-            'No pudimos enviar tu solicitud. Inténtalo nuevamente.';
+            'No fue posible guardar tu solicitud. Verifica tu conexión e inténtalo nuevamente.';
 
         } finally {
           boton.disabled = false;

@@ -279,17 +279,17 @@
                     </div>
                     <div class="campo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required />
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" maxlength="100" autocomplete="name" required />
                     <span class="campo-error" aria-live="polite"></span>
                     </div>
                     <div class="campo">
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
+                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" maxlength="100" required />
                     <span class="campo-error" aria-live="polite"></span>
                     </div>
                     <div class="campo">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Tienes alguna pregunta específica?" required></textarea>
+                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Tienes alguna pregunta específica?" maxlength="100" required></textarea>
                     <span class="campo-error" aria-live="polite"></span>
                     </div>
                     <button type="submit" class="boton-primario">Enviar mensaje</button>

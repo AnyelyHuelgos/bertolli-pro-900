@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { createHash } from 'node:crypto';
 
 
 export default async function handler(req, res) {
@@ -96,6 +97,39 @@ export default async function handler(req, res) {
       }
     });
 
+
+    
+    // Limitar envíos de cotizaciones por dirección IP
+    const ip = (
+      req.headers['x-forwarded-for']?.split(',')[0]?.trim()
+      || req.socket?.remoteAddress
+      || 'desconocida'
+    );
+
+    const identificador = createHash('sha256')
+      .update(`cotizacion:${ip}`)
+      .digest('hex');
+
+    const { data: permitido, error: errorLimite } =
+      await supabase.rpc('controlar_limite_agente', {
+        p_identificador: identificador
+      });
+
+    if (errorLimite) {
+      console.error('Error en el control de solicitudes');
+
+      return res.status(503).json({
+        error: 'El formulario no está disponible temporalmente.'
+      });
+    }
+
+    if (!permitido) {
+      return res.status(429).json({
+        error: 'Has enviado demasiadas solicitudes. Espera un minuto.'
+      });
+    }
+
+
     // 8. Guardar la cotización en PostgreSQL
     const { error } = await supabase
       .from('cotizaciones')
@@ -120,7 +154,10 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error inesperado en cotizaciones:', error);
+    console.error(
+      'Error inesperado en cotizaciones:',
+      error instanceof Error ? error.name : 'Error desconocido'
+    );
 
     return res.status(500).json({
       error: 'Error interno del servidor'

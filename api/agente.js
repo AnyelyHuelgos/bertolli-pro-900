@@ -145,6 +145,9 @@ REGLAS DE CONVERSACIÓN:
 12. No utilices Markdown, asteriscos ni símbolos
     para dar formato a tus respuestas.
 13. Usa párrafos cortos y fáciles de leer.  
+14. Cuando menciones precios, utiliza siempre el formato
+colombiano con espacio antes de COP.
+Ejemplo correcto: $4.299.000 COP.
 
 ATENCIÓN COMERCIAL:
 - Ayuda a explorar características y beneficios.

@@ -1,144 +1,501 @@
 # Bertolli Pro 900
 
-Este proyecto es una landing page de producto para una cocina a gas profesional ficticia de 5 hornillas. Lo desarrollé como prueba técnica frontend donde el reto era construir algo visualmente premium usando solo HTML, CSS y JavaScript vanilla — sin frameworks, sin librerías, sin atajos.
+### Landing page premium con inteligencia artificial y backend serverless
 
-La página está pensada para una persona que está investigando antes de comprar: alguien que quiere ver el producto, entender sus características, resolver sus dudas y finalmente cotizar.
+Bertolli Pro 900 es un proyecto de portafolio que simula la experiencia digital de una marca de cocinas a gas de alta gama.
 
+El objetivo fue desarrollar una landing page visualmente elegante, funcional y responsive, incorporando funcionalidades reales de desarrollo frontend y backend.
 
-🔗 [Demo en vivo](https://bertolli-pro-900.vercel.app)
+El proyecto combina HTML, CSS y JavaScript vanilla con servicios de Supabase, Vercel y OpenRouter para ofrecer una experiencia interactiva.
 
+**Demo en vivo:** https://bertolli-pro-900.vercel.app
 
-## Decisiones de diseño
+**Repositorio:** https://github.com/AnyelyHuelgos/bertolli-pro-900
+
+> **Aviso:** Bertolli Pro 900 es un producto ficticio creado para demostración. Los precios, especificaciones comerciales, garantías y condiciones de financiación forman parte de la simulación. No se realizan ventas ni pagos reales.
+
+---
+
+## 1. Descripción del proyecto
+
+El proyecto representa una página de producto premium para una cocina a gas de cinco hornillas.
+
+La experiencia está diseñada para que un visitante pueda:
+
+- Conocer el producto y sus características.
+- Explorar una galería de imágenes.
+- Consultar especificaciones técnicas.
+- Resolver dudas mediante preguntas frecuentes.
+- Simular cuotas de financiación.
+- Enviar un formulario de cotización de demostración.
+- Conversar con un asistente virtual impulsado por inteligencia artificial.
+
+La intención fue crear algo más completo que una landing page estática, integrando funcionalidades que requieren comunicación con servicios externos, validaciones y lógica de servidor.
+
+---
+
+## 2. Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| HTML5 | Estructura semántica |
+| CSS3 | Diseño responsive y sistema visual |
+| JavaScript | Interactividad y validaciones |
+| Node.js | Ejecución de funciones backend |
+| Vercel | Despliegue y funciones serverless |
+| Supabase | Base de datos PostgreSQL |
+| OpenRouter | Integración con modelos de IA |
+| Git y GitHub | Control de versiones |
+| VS Code | Entorno de desarrollo |
+
+El frontend está desarrollado sin frameworks como React, Angular o Vue.
+
+El backend utiliza servicios y dependencias externas para realizar las operaciones que no deben ejecutarse directamente en el navegador.
+
+---
+
+## 3. Funcionalidades principales
+
+### Landing page responsive
+
+La interfaz está diseñada para adaptarse a diferentes tamaños de pantalla.
+
+Incluye navegación responsive, estructura semántica, imágenes optimizadas y estilos que mantienen la identidad premium del producto.
+
+### Galería interactiva
+
+Permite explorar fotografías del producto mediante un visor de imágenes.
+
+Incluye navegación entre fotografías, controles interactivos y opciones de uso mediante teclado.
+
+### Preguntas frecuentes
+
+Sección FAQ desarrollada con JavaScript.
+
+Los usuarios pueden expandir y contraer respuestas sin recargar la página.
+
+### Calculadora de cuotas
+
+Permite seleccionar diferentes cantidades de cuotas y calcular el valor mensual aproximado.
+
+Las opciones disponibles son:
+
+- 3 cuotas.
+- 6 cuotas.
+- 12 cuotas.
+- 24 cuotas.
+- 36 cuotas.
+
+Los cálculos se realizan en JavaScript utilizando un precio demostrativo de $4.299.000 COP.
+
+No representa financiación bancaria real ni constituye una oferta comercial.
+
+### Formulario de cotización
+
+El formulario permite introducir nombre, correo electrónico y mensaje.
+
+Incluye:
+
+- Validación de campos obligatorios.
+- Validación del formato de correo electrónico.
+- Límites de longitud de los campos.
+- Mensajes de error y confirmación.
+- Estado de envío.
+- Campo honeypot para reducir spam.
+- Validación adicional en el servidor.
+- Integración con Supabase para almacenar solicitudes.
+
+El backend utiliza una función serverless para recibir los datos y guardarlos en PostgreSQL.
+
+### Bertolli Concierge — Asistente con IA
+
+Bertolli Concierge es un asistente virtual integrado en la página.
+
+Permite realizar preguntas sobre el producto mediante lenguaje natural.
+
+Entre sus funcionalidades se encuentran:
+
+- Integración con OpenRouter.
+- Base de conocimiento especializada.
+- Respuestas en español.
+- Información sobre características y materiales.
+- Explicaciones sobre precios demostrativos.
+- Información conceptual sobre garantías y accesorios.
+- Preguntas rápidas.
+- Mensajes de error personalizados.
+- Detección de respuestas vacías.
+- Segundo intento automático ante determinados fallos del proveedor.
+- Límites de uso implementados en el servidor.
+
+El asistente busca mantener un tono profesional, cercano y coherente con una marca premium.
+
+---
+
+## 4. Arquitectura del proyecto
+
+La aplicación utiliza una arquitectura que separa la interfaz pública de las operaciones privadas.
+
+**Frontend**
+
+HTML, CSS y JavaScript se encargan de mostrar la página, gestionar las interacciones y enviar solicitudes al backend.
+
+**Backend**
+
+Las funciones serverless alojadas en Vercel reciben las solicitudes, validan datos y se comunican con los servicios externos.
+
+**Base de datos**
+
+Supabase almacena la información enviada mediante el formulario y proporciona funciones PostgreSQL utilizadas para los controles de frecuencia.
+
+**Inteligencia artificial**
+
+OpenRouter procesa las preguntas del visitante utilizando las instrucciones y la base de conocimiento del asistente.
+
+### Archivos principales
+
+| Archivo | Responsabilidad |
+|---|---|
+| `index.html` | Estructura de la página |
+| `css/tokens.css` | Variables del sistema visual |
+| `css/main.css` | Estilos principales |
+| `css/components.css` | Estilos de componentes |
+| `js/main.js` | Interacciones y formulario |
+| `js/chat.js` | Interfaz del asistente |
+| `api/agente.js` | API del asistente |
+| `api/conocimiento.js` | Base de conocimiento |
+| `api/cotizaciones.js` | API de cotizaciones |
+
+---
+
+## 5. Seguridad y validaciones
+
+El proyecto incorpora distintas medidas para reducir errores, abusos y exposición accidental de información.
+
+### Protección de claves
+
+Las credenciales privadas de Supabase y OpenRouter se utilizan desde las funciones del servidor.
+
+No deben incluirse directamente en HTML, CSS o JavaScript público.
+
+### Validación de datos
+
+El formulario valida la información tanto en el navegador como en el backend.
+
+Las validaciones del servidor incluyen tipos de datos, campos obligatorios, longitudes máximas y formato de correo electrónico.
+
+### Protección contra spam
+
+El formulario incorpora un campo honeypot para identificar algunos envíos automatizados.
+
+También se ha agregado un control de frecuencia mediante Supabase, reutilizando la función de limitación con un identificador separado para las cotizaciones.
+
+### Límites del asistente
+
+El asistente utiliza controles de frecuencia implementados con funciones de Supabase:
+
+- Hasta cinco consultas por minuto por identificador.
+- Un cupo global configurado de 100 consultas diarias.
+
+Estos controles ayudan a limitar el uso excesivo del servicio de inteligencia artificial.
+
+### Manejo de errores
+
+Las respuestas del backend utilizan códigos HTTP y mensajes de error para comunicar problemas de validación, límites de uso o fallos de servicios externos.
+
+La interfaz presenta mensajes comprensibles para los visitantes.
+
+**Limitación:** Estas medidas reducen determinados riesgos, pero no sustituyen una auditoría de seguridad ni garantizan protección completa frente al spam.
+
+---
+
+## 6. Decisiones de diseño
 
 ### Paleta de colores
-Quería que la página se sintiera cara antes de que alguien leyera el precio. Por eso descarté el blanco puro y el negro absoluto desde el principio — esos son los colores de cualquier tienda genérica. En cambio elegí un crema #f5f0e8 y un negro carbón #1a1a18 que tienen una temperatura más cálida, más cercana a materiales físicos como papel de calidad o metal.
-El dorado #c8b99a lo usé con cuidado: solo en precios, bordes activos y detalles de hover. Si lo pones en todos lados pierde el efecto. Reservarlo para los momentos importantes le da peso real.
-La referencia directa fue Smeg y KitchenAid — fondos claros, tipografía oscura, un solo acento de color y mucho espacio en blanco.
+
+Quería que la página transmitiera una sensación premium antes de que el visitante leyera el precio.
+
+Por eso elegí una paleta cálida, inspirada en materiales físicos y acabados elegantes.
+
+Los colores principales son:
+
+- Crema: `#f5f0e8`
+- Negro carbón: `#1a1a18`
+- Dorado suave: `#c8b99a`
+
+El dorado se utiliza como acento en precios, bordes y estados interactivos.
+
+Mis referencias visuales fueron marcas como Smeg y KitchenAid, especialmente por el uso de fondos claros, tipografía elegante y espacios amplios.
 
 ### Tipografía
-Playfair Display para los títulos porque es una serif con mucho contraste entre trazos finos y gruesos — visualmente transmite precisión y calidad. La reservé solo para encabezados porque en bloques largos se cansa.
-DM Sans para el cuerpo porque es limpia, legible en pantalla y no compite con Playfair. El contraste entre las dos es lo que le da personalidad a la página.
-Los tamaños usan clamp() para que escalen suavemente entre móvil y desktop sin saltos bruscos.
 
-### Espaciado
-El espacio en blanco fue una decisión consciente. Las marcas premium respiran — no amontonan contenido. Si la página se siente apretada, se siente barata.
-En desktop tuve que corregir a mano el padding del contenedor en 1024px porque el valor inicial era demasiado generoso y el contenido se veía perdido. Lo ajusté hasta que se sintió anclado pero con aire.
+Utilicé Playfair Display para los títulos y DM Sans para el contenido general.
 
+Playfair Display aporta personalidad y elegancia, mientras que DM Sans mantiene una lectura clara en pantalla.
 
+La combinación busca equilibrar una estética premium con la facilidad de uso.
 
+### Espaciado y composición
 
-## Cómo verlo localmente
+El espacio en blanco es una parte importante del diseño.
 
-1. Clona el repositorio con git clone https://github.com/AnyelyHuelgos/bertolli-pro-900.git
-2. Abre la carpeta en VS Code (cd bertolli-pro-900)
-3. Click derecho en `index.html` → Open with Live Server
-4. Se abre solo en el navegador en `localhost:5500`
+Busqué evitar una interfaz sobrecargada, priorizando la jerarquía visual y la presentación del producto.
 
-No necesita instalación ni dependencias.
+Para construir las secciones utilicé CSS Grid y Flexbox según las necesidades de cada componente.
 
+### Diseño responsive
 
+El proyecto utiliza estilos adaptables a distintas resoluciones y tamaños de pantalla.
 
+También incorpora ajustes específicos para el chat en dispositivos móviles, incluyendo tamaños de controles, áreas desplazables y aprovechamiento de la altura disponible.
 
-## MI FLUJO CON IA
+---
 
-### ¿Qué partes delegué a Claude y por qué?
-Le delegué todo lo que era contenido y texto de la página — descripciones de características, preguntas del FAQ, copy del hero — porque no tenía sentido invertir tiempo en inventar textos de un producto ficticio cuando ese no era el foco de la prueba.
-En CSS le pedí que generara las variables de diseño como punto de partida, el reset y los estilos base de la página. También le pedí ayuda cuando me bloqueé con la galería: tenía el abrir y cerrar del lightbox pero no sabía cómo pasar la imagen correcta ni manejar la navegación entre fotos, así que le mostré lo que llevaba y me ayudó a completarlo. Para las especificaciones técnicas le pedí tres ideas visuales primero, elegí la que más me gustó y luego le pedí el código. La calculadora de cuotas y la validación del formulario las delegué porque quería que funcionaran con precisión — son los puntos donde el usuario toma una decisión real, y no podía permitirme errores ahí.
-En JavaScript tuve un rol mixto: yo escribía el código base y Claude me ayudaba a mejorarlo o completarlo. El menú hamburguesa, la galería y el formulario los empecé yo y los refinamos juntos.
-Al final me ayudó con el proceso de subir el proyecto a Vercel y con la optimización de imágenes para mejorar el score de Lighthouse — cosas puntuales donde era más eficiente preguntarle directamente que buscar en documentación.
+## 7. Accesibilidad
 
+La aplicación incorpora distintas prácticas de accesibilidad:
 
+- Uso de etiquetas HTML semánticas.
+- Textos alternativos en imágenes.
+- Etiquetas para campos de formulario.
+- Atributos ARIA en componentes interactivos.
+- Navegación mediante teclado.
+- Cierre de determinados componentes con Escape.
+- Indicadores visuales de foco.
+- Mensajes de estado y error.
+- Adaptación a preferencias de movimiento reducido en componentes del chat.
 
-### ¿Qué partes hice a mano sin IA y por qué?
-Las secciones de inicio, características y especificaciones las escribí yo en HTML desde cero — la estructura, la jerarquía y los nombres de clases. Claude me ayudó después a corregir detalles puntuales en otras partes, pero estas tres las construí sola porque quería tener control total sobre el núcleo del contenido.
-En CSS diseñé a mano el layout del hero, el grid de características y los estilos del formulario de contacto. El grid de características lo pensé yo — una columna en móvil, dos en tablet, tres en desktop — y también decidí el hover con desplazamiento vertical y el borde dorado como acento. Son decisiones de diseño que requieren criterio visual, no solo código.
-El acordeón del FAQ lo escribí completamente a mano porque es lógica simple y directa: busca los botones, escucha el click, lee el aria-expanded, cierra los demás y abre o cierra el actual. Quería tener al menos una función JavaScript que pudiera defender línea por línea sin dudar.
+Estas medidas deben complementarse con pruebas manuales y herramientas especializadas para evaluar el nivel de accesibilidad real.
 
+---
 
+## 8. Rendimiento y optimización
 
-### ¿Hubo alguna sugerencia de Claude que rechacé?
-Sí, dos veces. La primera fue con las variables CSS — Claude generó un sistema demasiado extenso y yo quería algo manejable y claro, así que lo reduje a máximo 23 variables con solo lo necesario. Un sistema de tokens gigante para un proyecto de esta escala es complejo de manejar.
-La segunda fue con el footer. Le pedí consejo estético y me propuso algo muy recargado que no encajaba con la línea limpia y premium del resto de la página. Tomé solo las sugerencias que tenían sentido y descarté el resto. El criterio de diseño era mío, Claude era una opinión más.
+Durante el desarrollo se aplicaron distintas técnicas orientadas al rendimiento:
 
+- Imágenes en formato WebP.
+- Carga diferida de imágenes de la galería.
+- Priorización de la imagen principal.
+- Scripts con atributo `defer`.
+- Precarga y optimización de recursos seleccionados.
+- Inicialización diferida de algunas interacciones mediante IntersectionObserver.
+- CSS responsive.
 
+El objetivo es ofrecer una experiencia fluida sin utilizar un framework frontend.
 
-### ¿Cuál fue el error más grande que cometió la IA?
-El error más notable fue con la galería. Claude generó el lightbox pero al verlo en el servidor el resultado fue horrible: el botón de cerrar no funcionaba, la imagen grande quedaba perdida con fondo negro en la parte de abajo, y las imágenes tenían tamaños inconsistentes entre sí. Funcionalmente estaba roto y estéticamente era un desastre.
-Lo detecté al desplegarlo y verlo en el navegador — en papel el código parecía correcto, pero en la práctica no funcionaba. Tuve que volver a Claude, mostrarle exactamente lo que estaba pasando y trabajarlo de nuevo hasta que quedó bien. Aprendí que con la IA no basta con que el código "tenga sentido" — hay que probarlo siempre en condiciones reales.
+### Lighthouse
 
+El proyecto cuenta con una medición anterior documentada en el repositorio:
 
+| Categoría | Resultado anterior |
+|---|---:|
+| Performance | 93 |
+| Accessibility | 97 |
+| Best Practices | 100 |
+| SEO | 100 |
 
-### Si tuviera que rehacer esta prueba mañana, ¿qué haría diferente?
-Le pediría opciones antes del código en más secciones. Lo hice con las especificaciones técnicas — pedí tres ideas visuales, elegí la que más me gustó y luego pedí el código — y fue el flujo que mejor me funcionó en todo el proyecto. Si lo repitiera, aplicaría esa misma lógica desde el principio en cada sección: primero criterio, luego ejecución.
+![Resultados anteriores de Lighthouse](assets/lighthouse.webp)
 
+Estos resultados corresponden a una auditoría previa. No deben interpretarse como una medición verificada de la versión actual.
 
+Después de los cambios recientes es necesario ejecutar nuevamente Lighthouse.
 
+---
 
+## 9. Mi flujo de desarrollo con inteligencia artificial
 
+La inteligencia artificial fue una herramienta de apoyo durante el desarrollo, especialmente para generar alternativas, resolver problemas y acelerar tareas concretas.
 
+### ¿Qué partes desarrollé manualmente?
 
+Construí la estructura principal de las secciones de inicio, características y especificaciones.
 
+También trabajé en la composición visual del hero, el grid de características y los estilos del formulario.
 
+El acordeón de preguntas frecuentes fue una de las funcionalidades que desarrollé manualmente para practicar JavaScript y comprender su funcionamiento.
 
+### ¿Cómo utilicé la IA?
 
-## DECISIONES TECNICAS
+Utilicé Claude como apoyo para desarrollar contenido ficticio, proponer estructuras visuales y resolver dificultades de implementación.
 
-La calculadora de cuotas fue construida con Claude. Reconozco que los estilos quedaron con valores hardcodeados en lugar de usar las variables del sistema de tokens — es una deuda técnica que identifico y que resolvería migrando cada valor a tokens.css.
+También recibí asistencia para mejorar interacciones, validaciones, la calculadora de cuotas y la galería de imágenes.
 
-### HTML semántico
-Usé las etiquetas correctas según el contenido: header, main, section, article, nav y footer. Las tarjetas de características usan article porque cada una es una pieza de contenido independiente. El visor de la galería tiene role="dialog" y aria-modal="true" porque se comporta como un modal. La tabla de especificaciones tiene scope="row" en cada encabezado para que los lectores de pantalla entiendan la relación entre celda y valor.
-Agregué aria-label en todas las secciones, aria-expanded y aria-controls en el FAQ y el menú, aria-hidden en los íconos decorativos, y aria-live="polite" en los mensajes de error del formulario para que se anuncien cuando aparecen.
+Posteriormente utilicé ChatGPT para ampliar el proyecto con funcionalidades backend, integración de Supabase, configuración de OpenRouter, controles de seguridad y mejoras de Bertolli Concierge.
 
-### Grid vs Flexbox
-La regla general fue simple: Grid para layouts bidimensionales, Flexbox para alinear elementos en una sola dirección.
-El hero y el grid de características usan Grid porque manejan filas y columnas al mismo tiempo. La navegación y el formulario usan Flexbox porque son estructuras lineales — una fila o una columna. El footer usa Grid para las cuatro columnas principales y Flexbox dentro de cada columna para los elementos internos.
-Tipografía fluida con clamp()
-En vez de redefinir tamaños en cada breakpoint, usé clamp() para que los títulos y textos escalen suavemente entre móvil y desktop.
+La IA ayudó a acelerar el trabajo, pero fue necesario revisar el código, corregir errores y probar las funcionalidades.
 
+### ¿Qué sugerencias de IA descarté?
 
-### JavaScript
-Toda la lógica está envuelta en DOMContentLoaded para que no bloquee la carga de la página. La galería, el FAQ y el formulario se inicializan con IntersectionObserver — solo cargan su lógica cuando la sección entra en el viewport, lo que mejora el rendimiento general.
-El menú hamburguesa maneja el foco correctamente: al cerrar con Escape, el foco vuelve al botón de toggle. La galería también devuelve el foco a la foto que abrió el visor al cerrar. Estas decisiones son pequeñas pero marcan la diferencia en accesibilidad por teclado.
-Mobile-first
-Todos los estilos base están escritos para móvil. Los @media (min-width) agregan complejidad progresivamente. Es más fácil de mantener y los dispositivos pequeños no cargan estilos que luego se sobreescriben.
+Durante el proceso descarté algunas propuestas que añadían complejidad innecesaria o no encajaban con la identidad visual.
 
+Por ejemplo, preferí mantener un sistema de variables CSS manejable y un footer más limpio, en lugar de utilizar alternativas demasiado extensas o recargadas.
 
+### ¿Qué aprendí?
 
+Uno de los aprendizajes principales fue que el código generado por IA también requiere validación.
 
+La galería fue un ejemplo importante: una implementación inicial presentaba problemas visuales y funcionales que solo se detectaron al probarla en el navegador.
 
-## QUE MEJORARIA SI TUVIERA MAS TIEMPO
+Esto reforzó la importancia de revisar el resultado real y comprender los cambios antes de publicarlos.
 
-Le daría más atención a las animaciones — me gustaría agregar entradas suaves a los elementos al hacer scroll con IntersectionObserver.
-En el lado técnico, implementaría dark mode con toggle y persistencia en localStorage para que la preferencia se guarde entre visitas.
-En funcionalidad, conectaría el formulario a un servicio real como Formspree para que los mensajes lleguen de verdad, y agregaría una sección de testimonios y un comparador de modelos — dos cosas que aportarían mucho al usuario que está investigando antes de comprar.
+---
 
+## 10. Retos técnicos del proyecto
 
+### Integración con una base de datos
 
+El formulario pasó de ser una interacción frontend a comunicarse con una función backend que almacena información en Supabase.
 
+Esto permitió practicar validación de solicitudes, manejo de respuestas HTTP, variables de entorno y operaciones de base de datos.
 
-## TEST BASICOS MANUALES
+### Integración de inteligencia artificial
 
+La creación de Bertolli Concierge implicó conectar la aplicación a un proveedor externo, estructurar instrucciones y desarrollar una base de conocimiento.
 
-Menú hamburguesa abre y cierra en móvil✅
-Galería navega con teclado (flechas y Escape)✅
-FAQ abre y cierra correctamente✅
-Formulario valida campos vacíos y email inválido✅
-Calculadora actualiza el valor al cambiar cuotas✅
-Página responsive en 320px, 768px y 1200px✅
-Lighthouse ≥ 90 en performance✅
+También fue necesario manejar respuestas vacías y errores del proveedor.
 
+### Seguridad en funciones serverless
 
+El proyecto permitió trabajar con separación entre cliente y servidor, protección de claves y controles de frecuencia basados en Supabase.
 
+### Experiencia de usuario
 
+Uno de los objetivos fue conseguir que las funcionalidades técnicas se integraran con el diseño premium sin afectar la facilidad de uso.
 
+---
 
-## Lighthouse
+## 11. Instalación y ejecución local
 
-![Resultados Lighthouse](assets/lighthouse.webp)
+### Requisitos
 
-- Performance: 93
-- Accessibility: 97
-- Best Practices: 100
-- SEO: 100
+- Node.js y npm.
+- Git.
+- Un editor como Visual Studio Code.
+- Acceso a un proyecto de Supabase configurado.
+- Una clave de OpenRouter.
+- Acceso a Vercel para trabajar con las funciones serverless.
 
+### Instalación
 
+Clonar el repositorio:
+
+`git clone https://github.com/AnyelyHuelgos/bertolli-pro-900.git`
+
+Entrar a la carpeta:
+
+`cd bertolli-pro-900`
+
+Instalar dependencias:
+
+`npm install`
+
+### Variables de entorno
+
+El backend utiliza las siguientes variables:
+
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY`
+- `OPENROUTER_API_KEY`
+
+Sus valores deben configurarse mediante un archivo local de entorno o en el entorno de ejecución.
+
+No se deben subir credenciales reales a GitHub.
+
+### Ejecución
+
+Para visualizar solamente la interfaz se puede utilizar Live Server.
+
+Para probar las funciones backend localmente puede utilizarse Vercel CLI:
+
+`npx vercel dev`
+
+La ejecución de Vercel CLI puede requerir autenticación, vincular el proyecto y configurar las variables de entorno correspondientes.
+
+La estructura y las funciones necesarias de Supabase también deben estar configuradas.
+
+---
+
+## 12. Despliegue
+
+El proyecto está alojado en Vercel y conectado con GitHub.
+
+Los cambios publicados en la rama `main` pueden iniciar despliegues automáticos de producción, según la configuración del proyecto.
+
+Las variables de entorno privadas se administran desde Vercel.
+
+Antes de publicar cambios importantes, es necesario comprobar la sintaxis, revisar las modificaciones y verificar que no se hayan incluido secretos.
+
+---
+
+## 13. Pruebas y comprobaciones
+
+Durante el desarrollo se realizaron pruebas manuales de distintas funcionalidades de la interfaz.
+
+Entre las comprobaciones históricas documentadas se encuentran:
+
+- Navegación responsive.
+- Apertura y cierre del menú.
+- Navegación por la galería.
+- Funcionamiento del FAQ.
+- Validación de campos del formulario.
+- Actualización de la calculadora de cuotas.
+
+También se comprobaron respuestas del asistente virtual en el entorno desplegado.
+
+### Comprobaciones pendientes para la versión final
+
+- Verificar el formulario completo contra Supabase.
+- Comprobar los límites de frecuencia del formulario.
+- Comprobar los límites diarios y por minuto del asistente.
+- Probar errores de conexión y respuestas vacías.
+- Revisar el chat con teclado virtual en dispositivos reales.
+- Realizar una auditoría Lighthouse actualizada.
+- Revisar accesibilidad con teclado y lector de pantalla.
+
+No se consideran superadas estas pruebas hasta ejecutarlas sobre la versión final.
+
+---
+
+## 14. Limitaciones del proyecto
+
+Bertolli Pro 900 es una demostración técnica y visual.
+
+No es una tienda comercial operativa.
+
+Los precios, garantías, políticas comerciales y determinadas especificaciones del producto son ficticios.
+
+El formulario representa una experiencia de solicitud de cotización, no una operación de venta.
+
+El asistente depende de la disponibilidad de OpenRouter y de los límites configurados.
+
+Las medidas de seguridad implementadas constituyen una base inicial y pueden ampliarse para aplicaciones con tráfico real.
+
+---
+
+## 15. Posibles mejoras futuras
+
+Entre las funcionalidades que podrían incorporarse más adelante se encuentran:
+
+- Pruebas automatizadas.
+- Monitoreo de errores.
+- Mejoras adicionales contra spam.
+- Comparador de productos.
+- Panel de administración para solicitudes.
+- Historial de conversaciones del asistente.
+- Nuevas opciones de accesibilidad.
+- Auditorías periódicas de rendimiento.
+
+Estas funcionalidades están fuera del alcance de la versión actual.
+
+---
+
+## Conclusión
+
+Bertolli Pro 900 comenzó como una landing page frontend y evolucionó hacia una aplicación demostrativa con backend, base de datos e inteligencia artificial.
+
+El proyecto me permitió aplicar conocimientos de estructura HTML, diseño responsive, JavaScript, consumo de APIs, funciones serverless, integración con bases de datos y despliegue.
+
+También fue una oportunidad para practicar la resolución de problemas, utilizar herramientas de inteligencia artificial de manera crítica y comprender la importancia de probar el código antes de publicarlo.
+
+Mi objetivo fue crear un proyecto visualmente atractivo, pero también demostrar cómo una interfaz puede conectarse con servicios reales y ofrecer una experiencia más completa.
+
+**Bertolli Pro 900 — Proyecto de portafolio de desarrollo web.**
